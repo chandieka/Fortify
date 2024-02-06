@@ -1,0 +1,5 @@
+targets: 
+  - name: "Test Firewall"
+    host: "fortigate.test"
+    port: 443
+    api_key: "pnnpxd5xf7s4gpwrf33fh7hb5b13Q3"

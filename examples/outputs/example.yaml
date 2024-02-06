@@ -1,0 +1,23 @@
+outputs:
+  - driver:
+      type: email 
+      hostname: simac-com.mail.protection.outlook.com
+      port: 25
+      message:
+        subject: "Test"
+        from: "martijn.van.hoof@simac.com"
+        to: "martijn.van.hoof@simac.com"
+        body: "this is the body of the email"
+    export: "temp.pdf"
+  - driver: 
+      type: filesystem
+      dir_path: "./"
+    export: "temp.json"
+  - driver: 
+      type: filesystem
+      dir_path: "./"
+    export: "temp.yaml"
+  - driver: 
+      type: filesystem
+      dir_path: "./"
+    export: "temp.pdf"

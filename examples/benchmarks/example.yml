@@ -1,0 +1,98 @@
+version: "1.0"
+name: "example"
+description: >
+  this a long description about this checklist...
+  2nd line of explaination..
+  ...
+benchmark:
+  - is_alive:
+  - dns_rating_error:
+      request_allowed: True
+  - snmp_trap:
+      enabled_events:
+        - cpu-high
+        - mem-low
+        - vpn-tun-up
+        - vpn-tun-down
+        - ha-switch
+        - ha-hb-failure
+        - ips-signature
+        - ips-anomaly
+        - av-virus
+        - av-oversize
+        - av-pattern
+        - ngp-established
+        - bgp-backward-transition
+        - ha-member-up
+        - ha-member-down
+        - av-converse
+        - av-bypass
+        - av-oversize-passed
+        - av-oversize-blocked
+        - ips-fail-open
+        - faz-disconnect
+        - fswctl-session-up
+        - fswctl-session-down
+        - wc-ap-up
+        - wc-ap-down
+        - dhcp
+      disabled_events:
+        - log-full
+        - intf-ip
+        - av-fragmanted
+        - fm-if-change
+        - fm-conf-change
+        - ent-conf-change
+        - ips-pkg-update
+        - load-balance-real-server-down
+        - device-new
+        - per-cpu-high
+  - fortigate_license:
+  - admin_permission:
+      account_names:
+        - martijnh
+      permission: "read-write"
+  - breakglass:
+      admin_name: "simac-op"
+      automation_stitch_name: "Detected breakglass admin login"
+  - latest_firmware_version:
+  - disable_interface_admin_access:
+      role: "wan"
+      forbid_access: 
+        - 'http'
+  - force_https:
+  - default_service_port:
+      ssh_port: [22, 2222]
+      http_port: [80, 8080, 8888]
+      https_port: [443, 4443, 4433]
+  - short_login_timeouts:
+      ssh_timeout: 30
+      admin_timeout: 5
+  - default_admin_name:
+  - enable_trusted_hosts:
+  - login_lockout_and_threshold:
+      login_threshold: 10
+      lockout_duration: 2
+  - multiple_admin_account:
+  - global_strong_encryption:
+  - admin_disclaimer:
+  - disable_md5_and_cbc_for_ssh:
+  - disable_static_keys_for_tls:
+  - disable_auto_usb_install:
+  - enable_sync_time_ntp:
+  - disable_maintainer_admin:
+  - disable_unused_interface:
+      ipv4: True
+      ipv6: False
+  - password_policy:
+        minimum_length: 8
+        min_lower_case_letter: 1
+        min_upper_case_letter: 1
+        min_non_alphanumeric: 1
+        min_number: 1
+        reuse_password: False
+  - admin_trusted_hosts:
+      admin_names:
+        - "simac-op"
+      trusted_hosts:
+        - "10.0.0.0 255.0.0.1"

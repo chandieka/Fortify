@@ -1,0 +1,5 @@
+filters:
+  - name: "my_filters"
+    pattern: ".*"
+    ignore:
+      - snmp_trap

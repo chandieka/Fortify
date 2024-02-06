@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Benchmark Report</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td, th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even){
+            background-color: #f2f2f2;
+        }
+        
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+        
+        .break {
+            page-break-before: always;
+        }
+        
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        
+        .information {
+            margin-bottom: 16px;
+            background-color: #003049;
+            padding: 8px;
+            color: white;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="margin-bottom: 8px;">
+        <div class="information">
+            <div style="padding: 8px;">
+                Date: {{date}}
+            </div>
+            <div style="padding: 8px;">
+                Benchmark: {{benchmark_file}}
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-bottom: 16px;">
+        <h1>Status Legend</h1>
+        <table>
+            <tr>
+                <th>Status code</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td>Success</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Fail</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Skip</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Ignore</td>
+            </tr>
+        </table>
+    </div>
+    <div class="container break">
+        <div class="summary">
+            <h1>Benchmark Summary</h1>
+        </div>
+        <table>
+            <tr>
+                <th>Device names</th>
+                <th>Total Check</th>
+                <th>Success</th>
+                <th>Failure</th>
+                <th>Skip</th>
+                <th>Ignore</th>
+                <th>Compliance Rating(%)</th>
+            </tr>
+            {% for summary in summaries %}
+            <tr>
+                <td>{{summary.device_name}}</td>
+                <td>{{summary.total_run}}</td>
+                <td>{{summary.total_success}}</td>
+                <td>{{summary.total_fail}}</td>
+                <td>{{summary.total_skip}}</td>
+                <td>{{summary.total_ignore}}</td>
+                <td>{{summary.rating}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% for benchmark in benchmarks %}
+    <div style="text-align: left;" class="break container">
+        <h1 style="margin-bottom: 8px;">{{ benchmark.target }}</h1>
+        <table>
+            <tr>
+                <th>
+                    <div>Plugin name</div>
+                </th>
+                <th>
+                    <div>Status</div>
+                </th>
+                <th>
+                    <div>Description</div>
+                </th>
+                <th>
+                    <div>
+                        Messages
+                    </div>
+                </th>
+            </tr>
+            {% for result in benchmark.plugin_output %}
+            <tr>
+                <td><div>{{result.plugin_name}}</div></td>
+                <td><div>{{result.status}}</div></td>
+                <td><div>{{result.description}}</div></td>
+                <td>
+                    <ul>
+                        {% for message in result.message %}
+                        <li>
+                            {{message}}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <br>
+    {% endfor %}
+</body>
+</html>

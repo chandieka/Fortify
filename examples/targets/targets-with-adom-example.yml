@@ -1,0 +1,14 @@
+targets: 
+  - name: "SECRETS"
+    host: "SECRETS"
+    port: "SECRETS"
+    username: "SECRETS"
+    password: "SECRETS"
+    is_manager: True
+    adom:
+      - SECRETS:
+      - SECRETS:
+  - name: "Test Firewall"
+    host: "fortigate.test"
+    port: 443
+    api_key: "SECRETS"

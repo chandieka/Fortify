@@ -1,0 +1,5 @@
+recursive-include lib/fortify/serializer/templates/
+include MANIFEST.in
+include README.md
+include LICENCE
+include requirements.txt

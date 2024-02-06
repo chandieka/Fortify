@@ -1,0 +1,54 @@
+version: "1.0"
+name: "FW Onboarding Checklist"
+description: "The list contained the baseline configuration that a FW need to have"
+benchmark:
+  - is_alive:
+  - dns_rating_error:
+      request_allowed: True
+  - snmp_trap:
+      enabled_events:
+        - cpu-high
+        - mem-low
+        - vpn-tun-up
+        - vpn-tun-down
+        - ha-switch
+        - ha-hb-failure
+        - ips-signature
+        - ips-anomaly
+        - av-virus
+        - av-oversize
+        - av-pattern
+        - ngp-established
+        - bgp-backward-transition
+        - ha-member-up
+        - ha-member-down
+        - av-converse
+        - av-bypass
+        - av-oversize-passed
+        - av-oversize-blocked
+        - ips-fail-open
+        - faz-disconnect
+        - fswctl-session-up
+        - fswctl-session-down
+        - wc-ap-up
+        - wc-ap-down
+        - dhcp
+      disabled_events:
+        - log-full
+        - intf-ip
+        - av-fragmanted
+        - fm-if-change
+        - fm-conf-change
+        - ent-conf-change
+        - ips-pkg-update
+        - load-balance-real-server-down
+        - device-new
+        - per-cpu-high
+  - fortigate_license:
+  - admin_permission:
+      account_names:
+        - martijnh
+      permission: "read-write"
+  - breakglass:
+      admin_name: "simac-op"
+      automation_stitch_name: "Detected breakglass admin login"
